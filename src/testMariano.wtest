@@ -1,6 +1,20 @@
+import golosinas.*
+import mariano.*
 
-test "testX" {
-
-	assert.that(true)
-
+describe "test golosinas"{
+		test "golosinas faltantes" {
+			mariano.comprar(chocolatin)
+			mariano.comprar(oblea)
+			const nuevasGolosinas = [oblea, chupetin, caramelo]
+			const golosinasFaltantesDeMariano = mariano.golosinasFaltantes(nuevasGolosinas)
+			assert.equals(#{chupetin, caramelo}, golosinasFaltantesDeMariano)
+		}
+	
+		test "gustos faltantes"{
+			mariano.comprar(bombon)
+			mariano.comprar(alfajor)
+			const gustosDeseados = ["frutilla","naranja", "chocolate"]
+			const gustosFaltantes = mariano.gustosFaltantes(gustosDeseados)
+			assert.equals(#{"naranja"}, gustosFaltantes)
+		}
 }
