@@ -33,7 +33,7 @@ object chupetin {
 	method mordisco(){
 		if( peso >= 2){
 			peso = peso * 0.9
-		}else {}
+		}
 	}
 }
 object oblea {
@@ -59,7 +59,7 @@ object chocolatin {
 	method libreGluten(){return false}
 	method mordisco(){peso = peso - 2} 
 	method peso(){return peso}	
-	method SetPesoInicial(unPeso){
+	method setPesoInicial(unPeso){
 		 pesoInicial = unPeso
 		 peso = unPeso
 	}
@@ -80,9 +80,11 @@ object golosinaBaniada {
 	}
 }	 
 object pastilla{
+	
 	var property peso = 5
 	var property libreGluten 
-	var saborActual
+	var gustoActual = 0
+	const saboresGolosinas = ["frutilla", "chocolate", "naranja"]
 	
 	method precio(){
 		if( self.libreGluten()){
@@ -91,15 +93,15 @@ object pastilla{
 			return 10	
 		}
 	}
-	method sabor(){ return saborActual}
+	method sabor(){ return saboresGolosinas.get(gustoActual)}
 	method mordisco(){
-		if (self.sabor()== "frutilla"  ){
-			saborActual =  "chocolate" 
-		}else if (self.sabor()== "chocolate"){
-			saborActual = "naranja" 
+				
+		if (gustoActual == 2 ){
+			gustoActual = 0
 		}else {
-			saborActual = "frutilla" 
+			gustoActual ++
 		}
+		
 	}
 }	
 	

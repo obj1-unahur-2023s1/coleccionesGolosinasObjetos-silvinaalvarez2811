@@ -1,20 +1,69 @@
 import golosinas.*
 import mariano.*
 
-describe "test golosinas"{
-		test "golosinas faltantes" {
-			mariano.comprar(chocolatin)
-			mariano.comprar(oblea)
-			const nuevasGolosinas = [oblea, chupetin, caramelo]
-			const golosinasFaltantesDeMariano = mariano.golosinasFaltantes(nuevasGolosinas)
-			assert.equals(#{chupetin, caramelo}, golosinasFaltantesDeMariano)
+describe "test mariano"{
+
+	method initialize(){
+		mariano.comprar(chocolatin)
+		mariano.comprar(caramelo)
+		mariano.comprar(bombon)
+		chocolatin.setPesoInicial(50)
 		}
-	
-		test "gustos faltantes"{
-			mariano.comprar(bombon)
-			mariano.comprar(alfajor)
-			const gustosDeseados = ["frutilla","naranja", "chocolate"]
-			const gustosFaltantes = mariano.gustosFaltantes(gustosDeseados)
-			assert.equals(#{"naranja"}, gustosFaltantes)
+		
+	test "cantidad de golosinas que compro mariano"	{
+		assert.equals( 3, mariano.cantidadDeGolosinas())
+	}	
+	test "para saber si  mariano ya tiene la golosina dada"	{	
+		assert.equals (true, mariano.tieneLaGolosina(caramelo))	
+	}	
+	test "probar todas las golosinas y verificar el cambio de los pesos " {	
+		assert.equals(50, chocolatin.peso())
+		assert.equals(5, caramelo.peso())
+		assert.equals(15, bombon.peso())
+		mariano.probarGolosinas()
+		assert.equals(48, chocolatin.peso())
+		assert.equals(4, caramelo.peso())
+		assert.equals(13, bombon.peso())
+	}		
+	test "indica si hay al menos una golosina sin TACC " {	
+		assert.equals(true, mariano.hayGolosinaSinTACC())	
+	}	
+	test "verifica si las golosinas cumplen con los precios cuidados " {	
+		assert.equals(false, mariano.preciosCuidados())	
+	}
+	test "encuentra la primer golosina que mariano tenga que sea del gusto dado " {	
+		assert.equals(chocolatin, mariano.golosinaDeSabor("chocolate"))
+		assert.equals(caramelo, mariano.golosinaDeSabor("frutilla"))	
+	}
+	test "encuentra todas golosinas que mariano tenga que sea del gusto dado " {	
+		assert.equals([chocolatin], mariano.golosinasDeSabor("chocolate"))
+		assert.equals([caramelo,bombon], mariano.golosinasDeSabor("frutilla"))	
+	}
+	test "devuelve un conjunto con los sabores de todas las golosinas de mariano " {	
+		assert.equals(#{"chocolate", "frutilla"}, mariano.sabores())
+	}
+	test "devuelve la golosina más cara " {	
+		assert.equals(chocolatin, mariano.golosinaMasCara())
+	}
+	test "devuelve la suma de los pesos de todas las golosinas " {	
+		assert.equals(70, mariano.pesoGolosinas())
+	}
+	test "golosinas faltantes" {
+			const nuevasGolosinas = [alfajor, bombon, chocolatin, chupetin]
+			assert.equals(#{alfajor, chupetin}, mariano.golosinasFaltantes(nuevasGolosinas))
 		}
+	test "gustos faltantes"{
+			const gustosDeseados = ["melón", "chocolate", "frutilla", "vainilla"]
+			assert.equals(#{"melón","vainilla"}, mariano.gustosFaltantes(gustosDeseados))
+		}
+		
+/////// test desafio/////
+
+	test " suma de los precios de las golosinas que sean del gusto dado"{
+		assert.equals(6, mariano.gastoEn("frutilla"))
+		assert.equals(25, mariano.gastoEn("chocolate"))
+	}
+
+		
+		
 }

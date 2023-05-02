@@ -2,25 +2,8 @@ import golosinas.*
 import mariano.*
 
 describe "test golosinas"{
-		test "golosinas faltantes" {
-			mariano.comprar(chocolatin)
-			mariano.comprar(oblea)
-			assert.equals([chocolatin, oblea], mariano.golosinas())
-			const nuevasGolosinas = [oblea, chupetin, caramelo]
-			const golosinasFaltantesDeMariano = mariano.golosinasFaltantes1(nuevasGolosinas)
-			assert.equals(#{chupetin, caramelo}, golosinasFaltantesDeMariano)
-		}
-	
-		test "gustos faltantes"{
-			mariano.comprar(bombon)
-			mariano.comprar(alfajor)
-			const gustosDeseados = ["frutilla","naranja", "chocolate"]
-			const gustosFaltantes = mariano.gustosFaltantes(gustosDeseados)
-			assert.equals(#{"naranja"}, gustosFaltantes)
-			
-		}
-		
-	/*test "bombon: peso inicial, peso despues de mordisco, sabor,libre de gluten,precio " {
+				
+	test "bombon: peso inicial, peso despues de mordisco, sabor,libre de gluten,precio " {
 		assert.equals(15, bombon.peso())
 		bombon.mordisco()
 		assert.equals(13, bombon.peso())
@@ -72,7 +55,7 @@ describe "test golosinas"{
 		assert.equals(5, oblea.precio())
 	}
 	test "chocolatin: peso inicial 40 gr, peso despues de mordisco, sabor,libre de gluten,precio " {
-		chocolatin.SetPesoInicial(40)
+		chocolatin.setPesoInicial(40)
 		assert.equals(40, chocolatin.peso())
 		chocolatin.mordisco()
 		assert.equals(38, chocolatin.peso())
@@ -81,7 +64,7 @@ describe "test golosinas"{
 		assert.equals(20, chocolatin.precio())
 	}
 	test "chocolatin: peso inicial 100 gr, peso despues de mordisco, sabor,libre de gluten,precio " {
-		chocolatin.SetPesoInicial(100)
+		chocolatin.setPesoInicial(100)
 		assert.equals(100, chocolatin.peso())
 		chocolatin.mordisco()
 		assert.equals(98, chocolatin.peso())
@@ -89,10 +72,8 @@ describe "test golosinas"{
 		assert.equals("chocolate",chocolatin.sabor())
 		assert.equals(50, chocolatin.precio())
 	}
-	test "pastilla: cambio de sabor despues de cada mordisco: frutilla, chocolate, naranja y frutilla nuevamente " {
-		
-		pastilla.mordisco()
-		assert.equals("frutilla",pastilla.sabor())
+	test "pastilla: cambio de sabor despues de cada mordisco con sabor inicial de frutilla: chocolate, naranja y frutilla nuevamente " {
+		assert.equals("frutilla", pastilla.sabor())
 		pastilla.mordisco()
 		assert.equals("chocolate",pastilla.sabor())
 		pastilla.mordisco()
@@ -111,7 +92,6 @@ describe "test golosinas"{
 		pastilla.libreGluten(true)
 		assert.equals(7, pastilla.precio())
 		assert.equals(9, golosinaBaniada.precio())
-		pastilla.mordisco()
 		assert.equals("frutilla",pastilla.sabor())
 		assert.equals("frutilla",golosinaBaniada.sabor())
 		assert.equals(true,golosinaBaniada.libreGluten())
@@ -120,7 +100,7 @@ describe "test golosinas"{
 	test "golosina baniada: chocolatin - peso, precio, sabor, libre de gluten y peso luego de mordisco " {
 		golosinaBaniada.baniaA(chocolatin) 
 		assert.equals(false,golosinaBaniada.libreGluten())
-		chocolatin.SetPesoInicial(10)
+		chocolatin.setPesoInicial(10)
 		assert.equals(5, chocolatin.precio())
 		assert.equals(7, golosinaBaniada.precio())
 		assert.equals(14, golosinaBaniada.peso())
@@ -137,5 +117,5 @@ describe "test golosinas"{
 		assert.equals("naranja",golosinaBaniada.sabor())
 		golosinaBaniada.mordisco()
 		assert.equals(8.3, golosinaBaniada.peso())
-	}*/
+	}
 }
