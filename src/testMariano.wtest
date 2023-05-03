@@ -63,7 +63,32 @@ describe "test mariano"{
 		assert.equals(6, mariano.gastoEn("frutilla"))
 		assert.equals(25, mariano.gastoEn("chocolate"))
 	}
-
-		
+	
+	test "Cuantos de sabor"{
+		assert.equals("frutilla", mariano.saborMasPopular())
+		mariano.comprar(oblea)
+		mariano.comprar(oblea)
+		mariano.comprar(oblea)
+		assert.equals("vainilla", mariano.saborMasPopular())
+		mariano.comprar(bombon)
+		mariano.comprar(bombon)
+		mariano.comprar(bombon)
+		assert.equals("frutilla", mariano.saborMasPopular())
+	}
+	test "sabor más pesado"{
+		assert.equals("chocolate",mariano.saborMasPesado())
+		mariano.comprar(oblea)
+		mariano.comprar(oblea)
+		mariano.comprar(oblea)
+		assert.equals("vainilla",mariano.saborMasPesado())
+	}
+	test "compra y desecha la golosina dada"{
+		mariano.desechar(caramelo)
+		assert.equals(true, mariano.comproYDesecho(caramelo))
+		mariano.comprar(chupetin)
+		assert.equals(false, mariano.comproYDesecho(chupetin))
+	}
+	
+	
 		
 }

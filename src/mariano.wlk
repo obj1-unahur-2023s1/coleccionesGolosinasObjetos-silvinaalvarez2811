@@ -2,11 +2,14 @@ import golosinas.*
 
 object mariano {
 	const golosinas = []
-	
+	const golosinasEliminadas =[]
 	
 	method golosinas(){return golosinas}
 	method comprar(unaGolosina){golosinas.add(unaGolosina)}
-	method desechar(unaGolosina){golosinas.remove(unaGolosina)}
+	method desechar(unaGolosina){
+		golosinas.remove(unaGolosina)
+		golosinasEliminadas.add(unaGolosina)
+	}
 	method cantidadDeGolosinas(){ return golosinas.size()}
 	method tieneLaGolosina(unaGolosina){return golosinas.contains(unaGolosina)}
 	method probarGolosinas(){golosinas.forEach({dulce => dulce.mordisco()})}
@@ -40,5 +43,21 @@ object mariano {
 	method gastoEn(sabor){
 		return golosinas.filter({dulce =>dulce.sabor()== sabor}).sum({dulce =>dulce.precio()})
 	}
-
+	
+	method saborMasPopular(){
+		return golosinas.max({ golosina => self.cuantasDeSabor(golosina.sabor() )}).sabor()
+	}
+	
+	method cuantasDeSabor(unSabor){
+		return golosinas.count({dulce => dulce.sabor() == unSabor })
+	}
+	method pesoDeUnSabor(unSabor){
+		return golosinas.filter({g => g.sabor()==unSabor}).sum({g =>g.peso()})
+	}
+	method saborMasPesado(){
+		return golosinas.max({g =>self.pesoDeUnSabor(g.sabor())}).sabor()
+	}
+	method comproYDesecho(golosina){return  golosinasEliminadas.contains(golosina)
+	}
+	
 }
