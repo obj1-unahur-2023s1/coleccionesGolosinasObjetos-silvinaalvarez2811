@@ -87,6 +87,10 @@ describe "test mariano"{
 		assert.equals(true, mariano.comproYDesecho(caramelo))
 		mariano.comprar(chupetin)
 		assert.equals(false, mariano.comproYDesecho(chupetin))
+		// prueba si mariano no tenia oblea en las golosinas compradas
+		// si no la tiene, no la puede desechar
+		mariano.desechar(oblea)
+		assert.equals(false, mariano.comproYDesecho(oblea))
 	}
 	
 	

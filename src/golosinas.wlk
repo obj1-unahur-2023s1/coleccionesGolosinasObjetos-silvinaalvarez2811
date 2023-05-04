@@ -76,7 +76,8 @@ object golosinaBaniada {
 	method peso(){return golosinaBase.peso() + pesoBanio } 
 	method mordisco(){
 		golosinaBase.mordisco() 
-		if ( pesoBanio > 0){ pesoBanio -= 2}
+		pesoBanio = 0.max(pesoBanio - 2)
+		
 	}
 }	 
 object pastilla{

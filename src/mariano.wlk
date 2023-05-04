@@ -7,8 +7,10 @@ object mariano {
 	method golosinas(){return golosinas}
 	method comprar(unaGolosina){golosinas.add(unaGolosina)}
 	method desechar(unaGolosina){
-		golosinas.remove(unaGolosina)
-		golosinasEliminadas.add(unaGolosina)
+		if(golosinas.contains(unaGolosina)){
+			golosinas.remove(unaGolosina)
+			golosinasEliminadas.add(unaGolosina)
+		}	
 	}
 	method cantidadDeGolosinas(){ return golosinas.size()}
 	method tieneLaGolosina(unaGolosina){return golosinas.contains(unaGolosina)}
